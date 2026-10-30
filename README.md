@@ -65,4 +65,4 @@ O arquivo do workflow e os scripts precisam estar na branch base para que a auto
 O pipeline treina o modelo durante cada execução com o dataset versionado. Para a primeira implantação, isso evita serviço, banco de dados ou infraestrutura adicionais; conforme o histórico crescer, considere persistir exemplos e treinar em um job separado. Também é necessário definir como registrar o resultado da QA no histórico, pois o comentário atual oferece checklist manual e não coleta automaticamente as respostas.
 
 
-echo "<!-- teste de automação do workflow --> detecção de comportamento destrutivo do player nas bordas do cenario" >> README.md
+echo "<!-- teste de automação do workflow --> alteração na detecção de comportamento destrutivo do player nas bordas do cenario" >> README.md
