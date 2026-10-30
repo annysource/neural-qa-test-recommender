@@ -63,3 +63,6 @@ O arquivo do workflow e os scripts precisam estar na branch base para que a auto
 ## Limites e próximos passos
 
 O pipeline treina o modelo durante cada execução com o dataset versionado. Para a primeira implantação, isso evita serviço, banco de dados ou infraestrutura adicionais; conforme o histórico crescer, considere persistir exemplos e treinar em um job separado. Também é necessário definir como registrar o resultado da QA no histórico, pois o comentário atual oferece checklist manual e não coleta automaticamente as respostas.
+
+
+ Re-teste com permissoes ativas
