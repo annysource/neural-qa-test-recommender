@@ -1,44 +1,33 @@
 name: QA test case recommendations
 
 on:
-  pull_request_target:
-    types: [opened, synchronize, reopened]
-    branches: [main]
+  pull_request:
+    branches: [ main ]
+    types: [ opened, synchronize, reopened ]
 
+# Permissões declaradas explicitamente para o GITHUB_TOKEN
 permissions:
   contents: read
+  pull-requests: write
   issues: write
-  pull-requests: read
-
-concurrency:
-  group: qa-test-recommender-${{ github.event.pull_request.number }}
-  cancel-in-progress: true
 
 jobs:
   recommend:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
-      issues: write
 
     steps:
-      # Use only the trusted base branch; never check out or execute PR code here.
-      - name: Check out base branch
+      - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.base.ref }}
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: npm
+          node-version: '20'
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Recommend test cases and update the PR comment
+      - name: Recommend test cases
         run: npm run recommend:pr
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
