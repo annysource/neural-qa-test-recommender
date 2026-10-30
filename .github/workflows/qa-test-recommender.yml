@@ -17,6 +17,11 @@ concurrency:
 jobs:
   recommend:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+
     steps:
       # Use only the trusted base branch; never check out or execute PR code here.
       - name: Check out base branch
