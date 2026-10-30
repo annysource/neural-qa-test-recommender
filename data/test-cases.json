@@ -1,0 +1,122 @@
+[
+  {
+    "id": "INV-001",
+    "functionality": "Inventory",
+    "component": "InventoryUI",
+    "description": "Select an available item in the inventory.",
+    "objective": "Verify that selecting an item updates its selected state.",
+    "preconditions": ["The player has an available item in the inventory."],
+    "steps": ["Open the inventory.", "Select an available item."],
+    "expectedResult": "The selected item is visibly marked as selected.",
+    "priority": "High",
+    "testType": "Functional",
+    "tags": ["inventory", "selection", "ui"],
+    "gherkin": {
+      "feature": "Inventory",
+      "scenario": "Select an inventory item",
+      "given": "the player has an available item",
+      "when": "the player selects the item",
+      "then": "the item should be marked as selected"
+    }
+  },
+  {
+    "id": "INV-002",
+    "functionality": "Inventory",
+    "component": "InventoryUI",
+    "description": "Use an item from the inventory.",
+    "objective": "Verify that a usable item can be activated from the inventory.",
+    "preconditions": ["The player has a usable item in the inventory."],
+    "steps": ["Open the inventory.", "Select a usable item.", "Choose Use."],
+    "expectedResult": "The item effect is applied and the inventory reflects its updated state.",
+    "priority": "High",
+    "testType": "Functional",
+    "tags": ["inventory", "item-use", "ui"],
+    "gherkin": {
+      "feature": "Inventory",
+      "scenario": "Use an inventory item",
+      "given": "the player has a usable item",
+      "when": "the player chooses Use for that item",
+      "then": "the item effect should be applied and the inventory should be updated"
+    }
+  },
+  {
+    "id": "PLY-001",
+    "functionality": "Player Movement",
+    "component": "PlayerController",
+    "description": "Move the player using the configured movement input.",
+    "objective": "Verify that player movement responds to input and respects the scene boundaries.",
+    "preconditions": ["A playable scene is loaded.", "The player character is active."],
+    "steps": ["Provide movement input.", "Move toward a scene boundary."],
+    "expectedResult": "The player moves in the requested direction and remains within the playable area.",
+    "priority": "Critical",
+    "testType": "Functional",
+    "tags": ["player", "movement", "input", "scene"],
+    "gherkin": {
+      "feature": "Player Movement",
+      "scenario": "Move the player within the playable area",
+      "given": "a playable scene is loaded and the player is active",
+      "when": "the player provides movement input toward a scene boundary",
+      "then": "the character should move in the requested direction and remain within the playable area"
+    }
+  },
+  {
+    "id": "SAV-001",
+    "functionality": "Save and Load",
+    "component": "SaveSystem",
+    "description": "Persist player progress and restore it after loading a saved game.",
+    "objective": "Verify that saved progress is available after restarting the game.",
+    "preconditions": ["The player has made progress that can be saved."],
+    "steps": ["Save the game.", "Restart the game.", "Load the saved game."],
+    "expectedResult": "The game restores the progress recorded in the save.",
+    "priority": "Critical",
+    "testType": "Integration",
+    "tags": ["save", "load", "persistence", "progress"],
+    "gherkin": {
+      "feature": "Save and Load",
+      "scenario": "Restore saved player progress",
+      "given": "the player has saved game progress",
+      "when": "the player restarts the game and loads that save",
+      "then": "the saved progress should be restored"
+    }
+  },
+  {
+    "id": "CBT-001",
+    "functionality": "Combat",
+    "component": "CombatController",
+    "description": "Apply the configured combat action to a valid target.",
+    "objective": "Verify that combat input affects the target and updates combat state.",
+    "preconditions": ["A valid target is present.", "The player can perform the combat action."],
+    "steps": ["Aim at the target.", "Perform the combat action."],
+    "expectedResult": "The target receives the configured effect and combat state is updated.",
+    "priority": "High",
+    "testType": "Functional",
+    "tags": ["combat", "target", "input", "gameplay"],
+    "gherkin": {
+      "feature": "Combat",
+      "scenario": "Perform a combat action on a valid target",
+      "given": "a valid target is present and the player can act",
+      "when": "the player performs the combat action while aiming at the target",
+      "then": "the target should receive the configured effect and combat state should be updated"
+    }
+  },
+  {
+    "id": "UI-001",
+    "functionality": "Pause Menu",
+    "component": "PauseMenu",
+    "description": "Open and close the pause menu during gameplay.",
+    "objective": "Verify that the pause menu and gameplay state stay synchronized.",
+    "preconditions": ["A playable scene is active."],
+    "steps": ["Open the pause menu.", "Close the pause menu."],
+    "expectedResult": "The menu is displayed while paused and gameplay resumes when it is closed.",
+    "priority": "Medium",
+    "testType": "Functional",
+    "tags": ["ui", "pause", "gameplay", "state"],
+    "gherkin": {
+      "feature": "Pause Menu",
+      "scenario": "Pause and resume gameplay",
+      "given": "a playable scene is active",
+      "when": "the player opens and then closes the pause menu",
+      "then": "the menu should be displayed while paused and gameplay should resume when it closes"
+    }
+  }
+]

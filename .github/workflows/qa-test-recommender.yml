@@ -1,0 +1,39 @@
+name: QA test case recommendations
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: read
+
+concurrency:
+  group: qa-test-recommender-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  recommend:
+    runs-on: ubuntu-latest
+    steps:
+      # Use only the trusted base branch; never check out or execute PR code here.
+      - name: Check out base branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.ref }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Recommend test cases and update the PR comment
+        run: npm run recommend:pr
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
