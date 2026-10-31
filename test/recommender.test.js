@@ -79,6 +79,71 @@ test('rejects history entries that reference unknown test case IDs', async () =>
     );
 });
 
+test('ranks test cases by changed source files even when model scores are tied', () => {
+    const testCases = [
+        {
+            id: 'AUD-001',
+            functionality: 'Mission audio',
+            component: 'MissionAudioController',
+            description: 'Play audio for a mission.',
+            objective: 'Verify the mission audio playback.',
+            preconditions: [],
+            steps: [],
+            expectedResult: 'Mission audio plays.',
+            priority: 'High',
+            testType: 'Functional',
+            tags: ['mission', 'audio'],
+            gherkin: {
+                feature: 'Mission audio',
+                scenario: 'Play mission audio',
+                given: 'a mission starts',
+                when: 'the mission audio plays',
+                then: 'the sound is heard'
+            }
+        },
+        {
+            id: 'INV-003',
+            functionality: 'Collect different items',
+            component: 'ItemPickupController',
+            description: 'Collect different items in the game.',
+            objective: 'Verify each item can be collected.',
+            preconditions: [],
+            steps: [],
+            expectedResult: 'Each item is added to inventory.',
+            priority: 'High',
+            testType: 'Functional',
+            tags: ['item', 'pickup', 'inventory'],
+            gherkin: {
+                feature: 'Collect items',
+                scenario: 'Collect different items',
+                given: 'items are present',
+                when: 'the player picks them up',
+                then: 'items enter inventory'
+            }
+        }
+    ];
+    const vocabulary = createVocabulary(testCases, []);
+    const tfStub = {
+        tensor2d: values => ({ values, dispose() {} })
+    };
+    const tiedModel = {
+        predict: tensor => ({
+            dataSync: () => tensor.values.map(() => 0.5),
+            dispose() {}
+        })
+    };
+    const recommendations = recommendTestCases(tfStub, tiedModel, {
+        branch: '',
+        title: '',
+        description: '',
+        commitMessages: [],
+        changedFiles: ['Assets/Scripts/Inventory/ItemPickupController.cs']
+    }, testCases, vocabulary);
+
+    assert.equal(recommendations[0].id, 'INV-003');
+    assert.match(recommendations[0].reason, /arquivos alterados/);
+});
+
 test('PR runner fetches commit context and publishes a checklist comment', async () => {
     let publishedComment;
     const apiServer = createServer(async (request, response) => {
@@ -86,6 +151,13 @@ test('PR runner fetches commit context and publishes a checklist comment', async
             response.writeHead(200, { 'Content-Type': 'application/json' });
             response.end(JSON.stringify([{
                 commit: { message: 'Fix inventory selection state' }
+            }]));
+            return;
+        }
+        if (request.method === 'GET' && request.url.startsWith('/repos/demo/unity-game/pulls/42/files')) {
+            response.writeHead(200, { 'Content-Type': 'application/json' });
+            response.end(JSON.stringify([{
+                filename: 'Assets/Scripts/Inventory/InventoryUI.cs'
             }]));
             return;
         }

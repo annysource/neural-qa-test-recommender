@@ -5,12 +5,21 @@
     "component": "InventoryUI",
     "description": "Select an available item in the inventory.",
     "objective": "Verify that selecting an item updates its selected state.",
-    "preconditions": ["The player has an available item in the inventory."],
-    "steps": ["Open the inventory.", "Select an available item."],
+    "preconditions": [
+      "The player has an available item in the inventory."
+    ],
+    "steps": [
+      "Open the inventory.",
+      "Select an available item."
+    ],
     "expectedResult": "The selected item is visibly marked as selected.",
     "priority": "High",
     "testType": "Functional",
-    "tags": ["inventory", "selection", "ui"],
+    "tags": [
+      "inventory",
+      "selection",
+      "ui"
+    ],
     "gherkin": {
       "feature": "Inventory",
       "scenario": "Select an inventory item",
@@ -25,12 +34,22 @@
     "component": "InventoryUI",
     "description": "Use an item from the inventory.",
     "objective": "Verify that a usable item can be activated from the inventory.",
-    "preconditions": ["The player has a usable item in the inventory."],
-    "steps": ["Open the inventory.", "Select a usable item.", "Choose Use."],
+    "preconditions": [
+      "The player has a usable item in the inventory."
+    ],
+    "steps": [
+      "Open the inventory.",
+      "Select a usable item.",
+      "Choose Use."
+    ],
     "expectedResult": "The item effect is applied and the inventory reflects its updated state.",
     "priority": "High",
     "testType": "Functional",
-    "tags": ["inventory", "item-use", "ui"],
+    "tags": [
+      "inventory",
+      "item-use",
+      "ui"
+    ],
     "gherkin": {
       "feature": "Inventory",
       "scenario": "Use an inventory item",
@@ -45,12 +64,23 @@
     "component": "PlayerController",
     "description": "Move the player using the configured movement input.",
     "objective": "Verify that player movement responds to input and respects the scene boundaries.",
-    "preconditions": ["A playable scene is loaded.", "The player character is active."],
-    "steps": ["Provide movement input.", "Move toward a scene boundary."],
+    "preconditions": [
+      "A playable scene is loaded.",
+      "The player character is active."
+    ],
+    "steps": [
+      "Provide movement input.",
+      "Move toward a scene boundary."
+    ],
     "expectedResult": "The player moves in the requested direction and remains within the playable area.",
     "priority": "Critical",
     "testType": "Functional",
-    "tags": ["player", "movement", "input", "scene"],
+    "tags": [
+      "player",
+      "movement",
+      "input",
+      "scene"
+    ],
     "gherkin": {
       "feature": "Player Movement",
       "scenario": "Move the player within the playable area",
@@ -65,12 +95,23 @@
     "component": "SaveSystem",
     "description": "Persist player progress and restore it after loading a saved game.",
     "objective": "Verify that saved progress is available after restarting the game.",
-    "preconditions": ["The player has made progress that can be saved."],
-    "steps": ["Save the game.", "Restart the game.", "Load the saved game."],
+    "preconditions": [
+      "The player has made progress that can be saved."
+    ],
+    "steps": [
+      "Save the game.",
+      "Restart the game.",
+      "Load the saved game."
+    ],
     "expectedResult": "The game restores the progress recorded in the save.",
     "priority": "Critical",
     "testType": "Integration",
-    "tags": ["save", "load", "persistence", "progress"],
+    "tags": [
+      "save",
+      "load",
+      "persistence",
+      "progress"
+    ],
     "gherkin": {
       "feature": "Save and Load",
       "scenario": "Restore saved player progress",
@@ -85,12 +126,23 @@
     "component": "CombatController",
     "description": "Apply the configured combat action to a valid target.",
     "objective": "Verify that combat input affects the target and updates combat state.",
-    "preconditions": ["A valid target is present.", "The player can perform the combat action."],
-    "steps": ["Aim at the target.", "Perform the combat action."],
+    "preconditions": [
+      "A valid target is present.",
+      "The player can perform the combat action."
+    ],
+    "steps": [
+      "Aim at the target.",
+      "Perform the combat action."
+    ],
     "expectedResult": "The target receives the configured effect and combat state is updated.",
     "priority": "High",
     "testType": "Functional",
-    "tags": ["combat", "target", "input", "gameplay"],
+    "tags": [
+      "combat",
+      "target",
+      "input",
+      "gameplay"
+    ],
     "gherkin": {
       "feature": "Combat",
       "scenario": "Perform a combat action on a valid target",
@@ -105,18 +157,2053 @@
     "component": "PauseMenu",
     "description": "Open and close the pause menu during gameplay.",
     "objective": "Verify that the pause menu and gameplay state stay synchronized.",
-    "preconditions": ["A playable scene is active."],
-    "steps": ["Open the pause menu.", "Close the pause menu."],
+    "preconditions": [
+      "A playable scene is active."
+    ],
+    "steps": [
+      "Open the pause menu.",
+      "Close the pause menu."
+    ],
     "expectedResult": "The menu is displayed while paused and gameplay resumes when it is closed.",
     "priority": "Medium",
     "testType": "Functional",
-    "tags": ["ui", "pause", "gameplay", "state"],
+    "tags": [
+      "ui",
+      "pause",
+      "gameplay",
+      "state"
+    ],
     "gherkin": {
       "feature": "Pause Menu",
       "scenario": "Pause and resume gameplay",
       "given": "a playable scene is active",
       "when": "the player opens and then closes the pause menu",
       "then": "the menu should be displayed while paused and gameplay should resume when it closes"
+    }
+  },
+  {
+    "id": "TC-CORE-001",
+    "functionality": "Installation and Boot",
+    "component": "LauncherSystem",
+    "description": "Activate game key on Steam",
+    "objective": "Verify that the product key activates successfully on Steam.",
+    "preconditions": [
+      "Steam client is running.",
+      "User has a valid game key."
+    ],
+    "steps": [
+      "Open Steam client.",
+      "Navigate to Activate a Product on Steam.",
+      "Enter the product key."
+    ],
+    "expectedResult": "Key activates successfully on Steam.",
+    "priority": "High",
+    "testType": "Functional",
+    "tags": [
+      "activation",
+      "installation",
+      "boot",
+      "steam",
+      "key"
+    ],
+    "gherkin": {
+      "feature": "Installation and Boot",
+      "scenario": "Activate game key on Steam",
+      "given": "steam client is running",
+      "when": "open steam client. and navigate to activate a product on steam. and enter the product key",
+      "then": "key activates successfully on steam"
+    }
+  },
+  {
+    "id": "TC-CORE-002",
+    "functionality": "Installation and Boot",
+    "component": "LauncherSystem",
+    "description": "Download and install the game",
+    "objective": "Verify that download and installation complete without errors.",
+    "preconditions": [
+      "Steam client is running.",
+      "Sufficient disk space is available."
+    ],
+    "steps": [
+      "Initiate download from Steam library.",
+      "Wait for installation to complete."
+    ],
+    "expectedResult": "Download and installation complete without errors.",
+    "priority": "Critical",
+    "testType": "Functional",
+    "tags": [
+      "download",
+      "installation",
+      "boot",
+      "steam"
+    ],
+    "gherkin": {
+      "feature": "Installation and Boot",
+      "scenario": "Download and install the game",
+      "given": "steam client is running",
+      "when": "initiate download from steam library. and wait for installation to complete",
+      "then": "download and installation complete without errors"
+    }
+  },
+  {
+    "id": "TC-CORE-003",
+    "functionality": "Installation and Boot",
+    "component": "LauncherSystem",
+    "description": "Install game in default directory",
+    "objective": "Verify that the default installation path functions properly.",
+    "preconditions": [
+      "Steam client is configured with default path."
+    ],
+    "steps": [
+      "Install game using default installation directory.",
+      "Launch the game."
+    ],
+    "expectedResult": "Game installs and launches correctly from default path.",
+    "priority": "Medium",
+    "testType": "Functional",
+    "tags": [
+      "installation",
+      "path",
+      "boot",
+      "default",
+      "steam"
+    ],
+    "gherkin": {
+      "feature": "Installation and Boot",
+      "scenario": "Install game in default directory",
+      "given": "steam client is configured with default path",
+      "when": "install game using default installation directory. and launch the game",
+      "then": "game installs and launches correctly from default path"
+    }
+  },
+  {
+    "id": "TC-CORE-004",
+    "functionality": "Installation and Boot",
+    "component": "LauncherSystem",
+    "description": "Install game in custom directory",
+    "objective": "Verify that installation in a custom folder path works.",
+    "preconditions": [
+      "Custom directory drive is accessible."
+    ],
+    "steps": [
+      "Select custom directory during installation.",
+      "Complete installation and launch."
+    ],
+    "expectedResult": "Installation completes and game launches from custom path.",
+    "priority": "Medium",
+    "testType": "Functional",
+    "tags": [
+      "installation",
+      "custom",
+      "path",
+      "boot",
+      "steam"
+    ],
+    "gherkin": {
+      "feature": "Installation and Boot",
+      "scenario": "Install game in custom directory",
+      "given": "custom directory drive is accessible",
+      "when": "select custom directory during installation. and complete installation and launch",
+      "then": "installation completes and game launches from custom path"
+    }
+  },
+  {
+    "id": "TC-CORE-005",
+    "functionality": "Installation and Boot",
+    "component": "LauncherSystem",
+    "description": "Verify game file integrity",
+    "objective": "Verify that Steam file integrity check detects no corrupted files.",
+    "preconditions": [
+      "Game is installed on Steam."
+    ],
+    "steps": [
+      "Right-click game in Steam library.",
+      "Select Properties -> Installed Files -> Verify integrity."
+    ],
+    "expectedResult": "Integrity check completes successfully with zero corrupted files.",
+    "priority": "High",
+    "testType": "Functional",
+    "tags": [
+      "installation",
+      "integrity",
+      "boot",
+      "files",
+      "steam"
+    ],
+    "gherkin": {
+      "feature": "Installation and Boot",
+      "scenario": "Verify game file integrity",
+      "given": "game is installed on steam",
+      "when": "right-click game in steam library. and select properties -> installed files -> verify integrity",
+      "then": "integrity check completes successfully with zero corrupted files"
+    }
+  },
+  {
+    "id": "TC-CORE-006",
+    "functionality": "Installation and Boot",
+    "component": "LauncherSystem",
+    "description": "Launch game via Steam client",
+    "objective": "Verify that the game launches successfully through the Steam client.",
+    "preconditions": [
+      "Game is installed on Steam."
+    ],
+    "steps": [
+      "Open Steam library.",
+      "Click Play on Endless Tactics."
+    ],
+    "expectedResult": "Game launches correctly via Steam.",
+    "priority": "Critical",
+    "testType": "Functional",
+    "tags": [
+      "installation",
+      "launch",
+      "boot",
+      "steam"
+    ],
+    "gherkin": {
+      "feature": "Installation and Boot",
+      "scenario": "Launch game via Steam client",
+      "given": "game is installed on steam",
+      "when": "open steam library. and click play on endless tactics",
+      "then": "game launches correctly via steam"
+    }
+  },
+  {
+    "id": "TC-CORE-007",
+    "functionality": "Installation and Boot",
+    "component": "LauncherSystem",
+    "description": "Launch game via direct executable",
+    "objective": "Verify that the game launches directly from the .exe file.",
+    "preconditions": [
+      "Game folder is accessible."
+    ],
+    "steps": [
+      "Navigate to game installation folder.",
+      "Double-click game executable (.exe)."
+    ],
+    "expectedResult": "Game launches correctly via executable.",
+    "priority": "High",
+    "testType": "Functional",
+    "tags": [
+      "installation",
+      "launch",
+      "boot",
+      "executable",
+      "steam"
+    ],
+    "gherkin": {
+      "feature": "Installation and Boot",
+      "scenario": "Launch game via direct executable",
+      "given": "game folder is accessible",
+      "when": "navigate to game installation folder. and double-click game executable (.exe)",
+      "then": "game launches correctly via executable"
+    }
+  },
+  {
+    "id": "TC-CORE-008",
+    "functionality": "Installation and Boot",
+    "component": "LauncherSystem",
+    "description": "Display splash screen during boot",
+    "objective": "Verify that the splash screen displays and closes as expected.",
+    "preconditions": [
+      "Game is ready to launch."
+    ],
+    "steps": [
+      "Launch the game.",
+      "Observe the boot sequence."
+    ],
+    "expectedResult": "Splash screen displays properly and transitions to main menu.",
+    "priority": "Low",
+    "testType": "Functional",
+    "tags": [
+      "installation",
+      "splash",
+      "boot",
+      "ui",
+      "steam"
+    ],
+    "gherkin": {
+      "feature": "Installation and Boot",
+      "scenario": "Display splash screen during boot",
+      "given": "game is ready to launch",
+      "when": "launch the game. and observe the boot sequence",
+      "then": "splash screen displays properly and transitions to main menu"
+    }
+  },
+  {
+    "id": "TC-CORE-009",
+    "functionality": "Installation and Boot",
+    "component": "LauncherSystem",
+    "description": "Check for freezes during startup",
+    "objective": "Verify there are no hangs or freezes during startup sequence.",
+    "preconditions": [
+      "Game is installed."
+    ],
+    "steps": [
+      "Launch the game.",
+      "Monitor startup logs and performance."
+    ],
+    "expectedResult": "No freezes or crashes occur during initialization.",
+    "priority": "Critical",
+    "testType": "Functional",
+    "tags": [
+      "installation",
+      "stability",
+      "startup",
+      "boot",
+      "steam"
+    ],
+    "gherkin": {
+      "feature": "Installation and Boot",
+      "scenario": "Check for freezes during startup",
+      "given": "game is installed",
+      "when": "launch the game. and monitor startup logs and performance",
+      "then": "no freezes or crashes occur during initialization"
+    }
+  },
+  {
+    "id": "TC-CORE-010",
+    "functionality": "System Settings",
+    "component": "SettingsManager",
+    "description": "Detect monitor native resolution",
+    "objective": "Verify that native display resolution is automatically detected.",
+    "preconditions": [
+      "Monitor is connected."
+    ],
+    "steps": [
+      "Launch the game for the first time.",
+      "Check display settings."
+    ],
+    "expectedResult": "Game automatically sets native monitor resolution.",
+    "priority": "High",
+    "testType": "Functional",
+    "tags": [
+      "settings",
+      "graphics",
+      "display",
+      "resolution",
+      "system",
+      "configuration"
+    ],
+    "gherkin": {
+      "feature": "System Settings",
+      "scenario": "Detect monitor native resolution",
+      "given": "monitor is connected",
+      "when": "launch the game for the first time. and check display settings",
+      "then": "game automatically sets native monitor resolution"
+    }
+  },
+  {
+    "id": "TC-CORE-011",
+    "functionality": "System Settings",
+    "component": "SettingsManager",
+    "description": "Toggle display modes",
+    "objective": "Verify seamless switching between Fullscreen, Windowed, and Borderless Windowed modes.",
+    "preconditions": [
+      "Game is running."
+    ],
+    "steps": [
+      "Open display settings.",
+      "Switch between Fullscreen, Windowed, and Borderless Windowed."
+    ],
+    "expectedResult": "Display mode changes instantly and correctly.",
+    "priority": "High",
+    "testType": "Functional",
+    "tags": [
+      "settings",
+      "display",
+      "fullscreen",
+      "system",
+      "windowed",
+      "configuration"
+    ],
+    "gherkin": {
+      "feature": "System Settings",
+      "scenario": "Toggle display modes",
+      "given": "game is running",
+      "when": "open display settings. and switch between fullscreen, windowed, and borderless windowed",
+      "then": "display mode changes instantly and correctly"
+    }
+  },
+  {
+    "id": "TC-CORE-012",
+    "functionality": "System Settings",
+    "component": "SettingsManager",
+    "description": "Save audio settings across sessions",
+    "objective": "Verify audio configuration changes persist across game sessions.",
+    "preconditions": [
+      "Game is running."
+    ],
+    "steps": [
+      "Adjust volume sliders and output device.",
+      "Restart the game."
+    ],
+    "expectedResult": "Audio settings remain saved as configured.",
+    "priority": "Medium",
+    "testType": "Functional",
+    "tags": [
+      "settings",
+      "volume",
+      "audio",
+      "system",
+      "configuration"
+    ],
+    "gherkin": {
+      "feature": "System Settings",
+      "scenario": "Save audio settings across sessions",
+      "given": "game is running",
+      "when": "adjust volume sliders and output device. and restart the game",
+      "then": "audio settings remain saved as configured"
+    }
+  },
+  {
+    "id": "TC-CORE-013",
+    "functionality": "System Settings",
+    "component": "SettingsManager",
+    "description": "Apply graphics options dynamically",
+    "objective": "Verify graphics settings apply immediately without requiring a game restart.",
+    "preconditions": [
+      "Game is running."
+    ],
+    "steps": [
+      "Change graphics preset or individual settings.",
+      "Apply changes."
+    ],
+    "expectedResult": "Graphics settings update immediately in real-time.",
+    "priority": "Medium",
+    "testType": "Functional",
+    "tags": [
+      "settings",
+      "graphics",
+      "system",
+      "configuration",
+      "video"
+    ],
+    "gherkin": {
+      "feature": "System Settings",
+      "scenario": "Apply graphics options dynamically",
+      "given": "game is running",
+      "when": "change graphics preset or individual settings. and apply changes",
+      "then": "graphics settings update immediately in real-time"
+    }
+  },
+  {
+    "id": "TC-CORE-014",
+    "functionality": "System Settings",
+    "component": "SettingsManager",
+    "description": "Change and persist game language",
+    "objective": "Verify changing game language updates UI text and persists after restart.",
+    "preconditions": [
+      "Game is running."
+    ],
+    "steps": [
+      "Select a different language in options.",
+      "Restart the game."
+    ],
+    "expectedResult": "Language changes immediately and stays selected after restart.",
+    "priority": "Medium",
+    "testType": "Functional",
+    "tags": [
+      "settings",
+      "localization",
+      "system",
+      "configuration",
+      "language"
+    ],
+    "gherkin": {
+      "feature": "System Settings",
+      "scenario": "Change and persist game language",
+      "given": "game is running",
+      "when": "select a different language in options. and restart the game",
+      "then": "language changes immediately and stays selected after restart"
+    }
+  },
+  {
+    "id": "TC-CORE-015",
+    "functionality": "System Settings",
+    "component": "SettingsManager",
+    "description": "Detect multiple input devices",
+    "objective": "Verify game recognizes mouse, keyboard, and controllers seamlessly.",
+    "preconditions": [
+      "Input devices connected."
+    ],
+    "steps": [
+      "Connect mouse, keyboard, and gamepad.",
+      "Provide input from each device."
+    ],
+    "expectedResult": "Game responds seamlessly to all connected input devices.",
+    "priority": "High",
+    "testType": "Functional",
+    "tags": [
+      "settings",
+      "controller",
+      "system",
+      "input",
+      "keyboard",
+      "configuration"
+    ],
+    "gherkin": {
+      "feature": "System Settings",
+      "scenario": "Detect multiple input devices",
+      "given": "input devices connected",
+      "when": "connect mouse, keyboard, and gamepad. and provide input from each device",
+      "then": "game responds seamlessly to all connected input devices"
+    }
+  },
+  {
+    "id": "TC-CORE-016",
+    "functionality": "Controls and Gameplay",
+    "component": "InputManager",
+    "description": "Verify input responsiveness",
+    "objective": "Verify all mapped gameplay inputs trigger expected actions without lag.",
+    "preconditions": [
+      "Game is active in a match."
+    ],
+    "steps": [
+      "Press each assigned movement and combat key."
+    ],
+    "expectedResult": "All inputs respond accurately and immediately.",
+    "priority": "Critical",
+    "testType": "Functional",
+    "tags": [
+      "responsiveness",
+      "controls",
+      "input",
+      "gameplay"
+    ],
+    "gherkin": {
+      "feature": "Controls and Gameplay",
+      "scenario": "Verify input responsiveness",
+      "given": "game is active in a match",
+      "when": "press each assigned movement and combat key",
+      "then": "all inputs respond accurately and immediately"
+    }
+  },
+  {
+    "id": "TC-CORE-017",
+    "functionality": "Controls and Gameplay",
+    "component": "InputManager",
+    "description": "Remap key bindings",
+    "objective": "Verify custom key rebinding updates gameplay controls correctly.",
+    "preconditions": [
+      "Game settings menu opened."
+    ],
+    "steps": [
+      "Rebind a gameplay control to a new key.",
+      "Test the new key in gameplay."
+    ],
+    "expectedResult": "Rebound key triggers the action properly.",
+    "priority": "High",
+    "testType": "Functional",
+    "tags": [
+      "controls",
+      "keybindings",
+      "input",
+      "gameplay",
+      "rebind"
+    ],
+    "gherkin": {
+      "feature": "Controls and Gameplay",
+      "scenario": "Remap key bindings",
+      "given": "game settings menu opened",
+      "when": "rebind a gameplay control to a new key. and test the new key in gameplay",
+      "then": "rebound key triggers the action properly"
+    }
+  },
+  {
+    "id": "TC-CORE-018",
+    "functionality": "Controls and Gameplay",
+    "component": "InputManager",
+    "description": "Gamepad native controller support",
+    "objective": "Verify native support for Xbox, PlayStation, and generic gamepads.",
+    "preconditions": [
+      "Gamepad connected."
+    ],
+    "steps": [
+      "Launch game with a gamepad connected.",
+      "Navigate UI and control character."
+    ],
+    "expectedResult": "Gamepad works natively with correct button prompts.",
+    "priority": "High",
+    "testType": "Functional",
+    "tags": [
+      "controls",
+      "controller",
+      "input",
+      "gamepad",
+      "gameplay"
+    ],
+    "gherkin": {
+      "feature": "Controls and Gameplay",
+      "scenario": "Gamepad native controller support",
+      "given": "gamepad connected",
+      "when": "launch game with a gamepad connected. and navigate ui and control character",
+      "then": "gamepad works natively with correct button prompts"
+    }
+  },
+  {
+    "id": "TC-CORE-019",
+    "functionality": "Controls and Gameplay",
+    "component": "InputManager",
+    "description": "Adjust mouse sensitivity",
+    "objective": "Verify adjusting mouse sensitivity changes camera and pointer speed.",
+    "preconditions": [
+      "Game settings menu open."
+    ],
+    "steps": [
+      "Change mouse sensitivity slider.",
+      "Move mouse in gameplay."
+    ],
+    "expectedResult": "Mouse speed scales proportionally with sensitivity slider.",
+    "priority": "Medium",
+    "testType": "Functional",
+    "tags": [
+      "controls",
+      "mouse",
+      "input",
+      "gameplay",
+      "sensitivity"
+    ],
+    "gherkin": {
+      "feature": "Controls and Gameplay",
+      "scenario": "Adjust mouse sensitivity",
+      "given": "game settings menu open",
+      "when": "change mouse sensitivity slider. and move mouse in gameplay",
+      "then": "mouse speed scales proportionally with sensitivity slider"
+    }
+  },
+  {
+    "id": "TC-CORE-020",
+    "functionality": "Controls and Gameplay",
+    "component": "InputManager",
+    "description": "Execute core gameplay actions",
+    "objective": "Verify core gameplay actions (move, jump, attack, interact) execute correctly.",
+    "preconditions": [
+      "Player character active in scene."
+    ],
+    "steps": [
+      "Perform walk, jump, attack, and interaction inputs."
+    ],
+    "expectedResult": "Character executes all core actions correctly.",
+    "priority": "Critical",
+    "testType": "Functional",
+    "tags": [
+      "controls",
+      "input",
+      "movement",
+      "gameplay",
+      "actions"
+    ],
+    "gherkin": {
+      "feature": "Controls and Gameplay",
+      "scenario": "Execute core gameplay actions",
+      "given": "player character active in scene",
+      "when": "perform walk, jump, attack, and interaction inputs",
+      "then": "character executes all core actions correctly"
+    }
+  },
+  {
+    "id": "TC-CORE-021",
+    "functionality": "Controls and Gameplay",
+    "component": "InputManager",
+    "description": "Update HUD dynamically",
+    "objective": "Verify HUD elements update accurately according to player actions and health.",
+    "preconditions": [
+      "Gameplay active."
+    ],
+    "steps": [
+      "Perform actions that alter health, stamina, or ammo."
+    ],
+    "expectedResult": "HUD reflects status changes immediately.",
+    "priority": "High",
+    "testType": "Functional",
+    "tags": [
+      "hud",
+      "controls",
+      "ui",
+      "input",
+      "status",
+      "gameplay"
+    ],
+    "gherkin": {
+      "feature": "Controls and Gameplay",
+      "scenario": "Update HUD dynamically",
+      "given": "gameplay active",
+      "when": "perform actions that alter health, stamina, or ammo",
+      "then": "hud reflects status changes immediately"
+    }
+  },
+  {
+    "id": "TC-CORE-022",
+    "functionality": "Controls and Gameplay",
+    "component": "InputManager",
+    "description": "Verify Save and Load data integrity",
+    "objective": "Verify saving and loading game progress does not corrupt data.",
+    "preconditions": [
+      "Saved game data present."
+    ],
+    "steps": [
+      "Save game state.",
+      "Load saved game state."
+    ],
+    "expectedResult": "Save data loads intact without corruption.",
+    "priority": "Critical",
+    "testType": "Functional",
+    "tags": [
+      "controls",
+      "load",
+      "save",
+      "input",
+      "persistence",
+      "gameplay"
+    ],
+    "gherkin": {
+      "feature": "Controls and Gameplay",
+      "scenario": "Verify Save and Load data integrity",
+      "given": "saved game data present",
+      "when": "save game state. and load saved game state",
+      "then": "save data loads intact without corruption"
+    }
+  },
+  {
+    "id": "TC-CORE-023",
+    "functionality": "Interface and UX",
+    "component": "UIManager",
+    "description": "Check text legibility across resolutions",
+    "objective": "Verify UI text remains clear and readable across various screen resolutions.",
+    "preconditions": [
+      "Game active."
+    ],
+    "steps": [
+      "Set resolution to 720p, 1080p, 1440p, and 4K."
+    ],
+    "expectedResult": "Text remains crisp and readable at all resolutions.",
+    "priority": "Medium",
+    "testType": "Functional",
+    "tags": [
+      "resolution",
+      "ui",
+      "interface",
+      "ux",
+      "text"
+    ],
+    "gherkin": {
+      "feature": "Interface and UX",
+      "scenario": "Check text legibility across resolutions",
+      "given": "game active",
+      "when": "set resolution to 720p, 1080p, 1440p, and 4k",
+      "then": "text remains crisp and readable at all resolutions"
+    }
+  },
+  {
+    "id": "TC-CORE-024",
+    "functionality": "Interface and UX",
+    "component": "UIManager",
+    "description": "Verify UI layout scaling",
+    "objective": "Verify no UI elements overlap or get clipped at different aspect ratios.",
+    "preconditions": [
+      "Game active."
+    ],
+    "steps": [
+      "Switch aspect ratios (16:9, 16:10, 21:9)."
+    ],
+    "expectedResult": "UI layout scales cleanly without clipping or overlapping.",
+    "priority": "High",
+    "testType": "Functional",
+    "tags": [
+      "aspect-ratio",
+      "ui",
+      "interface",
+      "ux",
+      "layout"
+    ],
+    "gherkin": {
+      "feature": "Interface and UX",
+      "scenario": "Verify UI layout scaling",
+      "given": "game active",
+      "when": "switch aspect ratios (16:9, 16:10, 21:9)",
+      "then": "ui layout scales cleanly without clipping or overlapping"
+    }
+  },
+  {
+    "id": "TC-CORE-025",
+    "functionality": "Interface and UX",
+    "component": "UIManager",
+    "description": "UI button hover and click states",
+    "objective": "Verify UI buttons provide appropriate visual hover and click feedback.",
+    "preconditions": [
+      "UI menu open."
+    ],
+    "steps": [
+      "Hover mouse over UI buttons.",
+      "Click each button."
+    ],
+    "expectedResult": "Buttons show hover state and trigger on click.",
+    "priority": "Medium",
+    "testType": "Functional",
+    "tags": [
+      "buttons",
+      "ui",
+      "interface",
+      "ux",
+      "hover"
+    ],
+    "gherkin": {
+      "feature": "Interface and UX",
+      "scenario": "UI button hover and click states",
+      "given": "ui menu open",
+      "when": "hover mouse over ui buttons. and click each button",
+      "then": "buttons show hover state and trigger on click"
+    }
+  },
+  {
+    "id": "TC-CORE-026",
+    "functionality": "Interface and UX",
+    "component": "UIManager",
+    "description": "Display cursor and tooltips",
+    "objective": "Verify mouse cursors and context tooltips appear correctly on hover.",
+    "preconditions": [
+      "UI menu or inventory open."
+    ],
+    "steps": [
+      "Hover mouse over interactive items and buttons."
+    ],
+    "expectedResult": "Tooltips and custom cursors display correctly.",
+    "priority": "Low",
+    "testType": "Functional",
+    "tags": [
+      "cursor",
+      "ui",
+      "interface",
+      "ux",
+      "tooltip"
+    ],
+    "gherkin": {
+      "feature": "Interface and UX",
+      "scenario": "Display cursor and tooltips",
+      "given": "ui menu or inventory open",
+      "when": "hover mouse over interactive items and buttons",
+      "then": "tooltips and custom cursors display correctly"
+    }
+  },
+  {
+    "id": "TC-CORE-027",
+    "functionality": "Interface and UX",
+    "component": "UIManager",
+    "description": "Pause game on menu open",
+    "objective": "Verify opening the pause menu suspends background gameplay activity.",
+    "preconditions": [
+      "Gameplay active."
+    ],
+    "steps": [
+      "Open pause menu."
+    ],
+    "expectedResult": "Game logic and animations pause while menu is open.",
+    "priority": "High",
+    "testType": "Functional",
+    "tags": [
+      "state",
+      "ui",
+      "interface",
+      "ux",
+      "pause",
+      "menu"
+    ],
+    "gherkin": {
+      "feature": "Interface and UX",
+      "scenario": "Pause game on menu open",
+      "given": "gameplay active",
+      "when": "open pause menu",
+      "then": "game logic and animations pause while menu is open"
+    }
+  },
+  {
+    "id": "TC-CORE-028",
+    "functionality": "Interface and UX",
+    "component": "UIManager",
+    "description": "Navigate UI with keyboard and gamepad",
+    "objective": "Verify full menu navigation using directional keys and gamepad D-pad.",
+    "preconditions": [
+      "Main menu or options open."
+    ],
+    "tags": [
+      "controller",
+      "ui",
+      "navigation",
+      "interface",
+      "ux"
+    ],
+    "steps": [
+      "Navigate menus using keyboard arrow keys or gamepad D-pad."
+    ],
+    "expectedResult": "Selection highlight moves smoothly across menu items.",
+    "priority": "High",
+    "testType": "Functional",
+    "gherkin": {
+      "feature": "Interface and UX",
+      "scenario": "Navigate UI with keyboard and gamepad",
+      "given": "main menu or options open",
+      "when": "navigate menus using keyboard arrow keys or gamepad d-pad",
+      "then": "selection highlight moves smoothly across menu items"
+    }
+  },
+  {
+    "id": "TC-CORE-029",
+    "functionality": "Audio and Video",
+    "component": "AudioManager",
+    "description": "Play background music and SFX",
+    "objective": "Verify music tracks and sound effects trigger during appropriate events.",
+    "preconditions": [
+      "Gameplay active."
+    ],
+    "steps": [
+      "Trigger gameplay events and ambient music."
+    ],
+    "expectedResult": "Audio plays synchronously with gameplay events.",
+    "priority": "High",
+    "testType": "Functional",
+    "tags": [
+      "audio",
+      "music",
+      "video",
+      "sfx",
+      "media"
+    ],
+    "gherkin": {
+      "feature": "Audio and Video",
+      "scenario": "Play background music and SFX",
+      "given": "gameplay active",
+      "when": "trigger gameplay events and ambient music",
+      "then": "audio plays synchronously with gameplay events"
+    }
+  },
+  {
+    "id": "TC-CORE-030",
+    "functionality": "Audio and Video",
+    "component": "AudioManager",
+    "description": "Independent audio volume channels",
+    "objective": "Verify Master, SFX, and Music volume channels adjust independently.",
+    "preconditions": [
+      "Audio settings open."
+    ],
+    "steps": [
+      "Adjust Master, SFX, and Music volume sliders separately."
+    ],
+    "expectedResult": "Each channel volume changes independently.",
+    "priority": "Medium",
+    "testType": "Functional",
+    "tags": [
+      "volume",
+      "audio",
+      "video",
+      "sfx",
+      "media"
+    ],
+    "gherkin": {
+      "feature": "Audio and Video",
+      "scenario": "Independent audio volume channels",
+      "given": "audio settings open",
+      "when": "adjust master, sfx, and music volume sliders separately",
+      "then": "each channel volume changes independently"
+    }
+  },
+  {
+    "id": "TC-CORE-031",
+    "functionality": "Audio and Video",
+    "component": "AudioManager",
+    "description": "Audio playback during scene transitions",
+    "objective": "Verify audio does not pop, stutter, or cut abruptly during scene loads.",
+    "preconditions": [
+      "Game playing."
+    ],
+    "steps": [
+      "Trigger scene load or level transition."
+    ],
+    "expectedResult": "Audio transitions smoothly without cracking or popping.",
+    "priority": "Medium",
+    "testType": "Functional",
+    "tags": [
+      "transition",
+      "audio",
+      "video",
+      "loading",
+      "media"
+    ],
+    "gherkin": {
+      "feature": "Audio and Video",
+      "scenario": "Audio playback during scene transitions",
+      "given": "game playing",
+      "when": "trigger scene load or level transition",
+      "then": "audio transitions smoothly without cracking or popping"
+    }
+  },
+  {
+    "id": "TC-CORE-032",
+    "functionality": "Audio and Video",
+    "component": "AudioManager",
+    "description": "Play cinematic cutscenes smoothly",
+    "objective": "Verify cinematic cutscenes play without stutter or audio video desync.",
+    "preconditions": [
+      "Cutscene triggered."
+    ],
+    "steps": [
+      "Watch cutscene play."
+    ],
+    "expectedResult": "Cutscene plays smoothly with synchronized audio.",
+    "priority": "High",
+    "testType": "Functional",
+    "tags": [
+      "audio",
+      "cutscene",
+      "video",
+      "cinematics",
+      "media"
+    ],
+    "gherkin": {
+      "feature": "Audio and Video",
+      "scenario": "Play cinematic cutscenes smoothly",
+      "given": "cutscene triggered",
+      "when": "watch cutscene play",
+      "then": "cutscene plays smoothly with synchronized audio"
+    }
+  },
+  {
+    "id": "TC-CORE-033",
+    "functionality": "Audio and Video",
+    "component": "AudioManager",
+    "description": "Skip cinematic cutscenes",
+    "objective": "Verify cutscenes can be skipped by pressing the designated skip button.",
+    "preconditions": [
+      "Cutscene playing."
+    ],
+    "steps": [
+      "Press skip key/button."
+    ],
+    "expectedResult": "Cutscene terminates and gameplay resumes immediately.",
+    "priority": "Low",
+    "testType": "Functional",
+    "tags": [
+      "audio",
+      "cutscene",
+      "video",
+      "skip",
+      "ui",
+      "media"
+    ],
+    "gherkin": {
+      "feature": "Audio and Video",
+      "scenario": "Skip cinematic cutscenes",
+      "given": "cutscene playing",
+      "when": "press skip key/button",
+      "then": "cutscene terminates and gameplay resumes immediately"
+    }
+  },
+  {
+    "id": "TC-CORE-034",
+    "functionality": "Performance and Stability",
+    "component": "PerformanceController",
+    "description": "Maintain target framerate",
+    "objective": "Verify frame rate remains consistent above the minimum threshold (e.g. 60 FPS).",
+    "preconditions": [
+      "Gameplay active."
+    ],
+    "steps": [
+      "Play through demanding game area while monitoring FPS."
+    ],
+    "expectedResult": "FPS remains stable above target threshold.",
+    "priority": "Critical",
+    "testType": "Non-Functional",
+    "tags": [
+      "fps",
+      "stability",
+      "framerate",
+      "performance"
+    ],
+    "gherkin": {
+      "feature": "Performance and Stability",
+      "scenario": "Maintain target framerate",
+      "given": "gameplay active",
+      "when": "play through demanding game area while monitoring fps",
+      "then": "fps remains stable above target threshold"
+    }
+  },
+  {
+    "id": "TC-CORE-035",
+    "functionality": "Performance and Stability",
+    "component": "PerformanceController",
+    "description": "Prevent frame rate hitches",
+    "objective": "Verify there are no sudden FPS drops when entering new areas or combat.",
+    "preconditions": [
+      "Gameplay active."
+    ],
+    "steps": [
+      "Explore various game areas and initiate heavy combat."
+    ],
+    "expectedResult": "Framerate remains smooth without hitching.",
+    "priority": "High",
+    "testType": "Non-Functional",
+    "tags": [
+      "fps",
+      "stability",
+      "hitch",
+      "performance"
+    ],
+    "gherkin": {
+      "feature": "Performance and Stability",
+      "scenario": "Prevent frame rate hitches",
+      "given": "gameplay active",
+      "when": "explore various game areas and initiate heavy combat",
+      "then": "framerate remains smooth without hitching"
+    }
+  },
+  {
+    "id": "TC-CORE-036",
+    "functionality": "Performance and Stability",
+    "component": "PerformanceController",
+    "description": "Stability during standard gameplay",
+    "objective": "Verify game runs continuously without crashing during standard gameplay.",
+    "preconditions": [
+      "Standard gameplay session active."
+    ],
+    "steps": [
+      "Play game continuously for standard session duration."
+    ],
+    "expectedResult": "Game operates without any application crashes.",
+    "priority": "Critical",
+    "testType": "Non-Functional",
+    "tags": [
+      "crash",
+      "stability",
+      "performance",
+      "fps"
+    ],
+    "gherkin": {
+      "feature": "Performance and Stability",
+      "scenario": "Stability during standard gameplay",
+      "given": "standard gameplay session active",
+      "when": "play game continuously for standard session duration",
+      "then": "game operates without any application crashes"
+    }
+  },
+  {
+    "id": "TC-CORE-037",
+    "functionality": "Performance and Stability",
+    "component": "PerformanceController",
+    "description": "Monitor CPU and RAM usage",
+    "objective": "Verify resource consumption stays within acceptable system boundaries.",
+    "preconditions": [
+      "Game running under load."
+    ],
+    "steps": [
+      "Check Task Manager or performance monitor."
+    ],
+    "expectedResult": "CPU and RAM usage remain within designated thresholds.",
+    "priority": "High",
+    "testType": "Non-Functional",
+    "tags": [
+      "ram",
+      "stability",
+      "cpu",
+      "performance",
+      "fps"
+    ],
+    "gherkin": {
+      "feature": "Performance and Stability",
+      "scenario": "Monitor CPU and RAM usage",
+      "given": "game running under load",
+      "when": "check task manager or performance monitor",
+      "then": "cpu and ram usage remain within designated thresholds"
+    }
+  },
+  {
+    "id": "TC-CORE-038",
+    "functionality": "Performance and Stability",
+    "component": "PerformanceController",
+    "description": "Detect memory leaks",
+    "objective": "Verify RAM usage does not continuously increase during extended play.",
+    "preconditions": [
+      "Extended gameplay session active."
+    ],
+    "steps": [
+      "Play game continuously for 2+ hours."
+    ],
+    "expectedResult": "Memory usage remains flat without leaking.",
+    "priority": "High",
+    "testType": "Non-Functional",
+    "tags": [
+      "stability",
+      "performance",
+      "memory-leak",
+      "fps"
+    ],
+    "gherkin": {
+      "feature": "Performance and Stability",
+      "scenario": "Detect memory leaks",
+      "given": "extended gameplay session active",
+      "when": "play game continuously for 2+ hours",
+      "then": "memory usage remains flat without leaking"
+    }
+  },
+  {
+    "id": "TC-CORE-039",
+    "functionality": "Performance and Stability",
+    "component": "PerformanceController",
+    "description": "Loading screen stability",
+    "objective": "Verify loading screens complete successfully without hanging.",
+    "preconditions": [
+      "Level loading triggered."
+    ],
+    "steps": [
+      "Observe loading screen progress bar."
+    ],
+    "expectedResult": "Level loads completely and transfers to gameplay.",
+    "priority": "Critical",
+    "testType": "Non-Functional",
+    "tags": [
+      "loading",
+      "stability",
+      "performance",
+      "progress",
+      "fps"
+    ],
+    "gherkin": {
+      "feature": "Performance and Stability",
+      "scenario": "Loading screen stability",
+      "given": "level loading triggered",
+      "when": "observe loading screen progress bar",
+      "then": "level loads completely and transfers to gameplay"
+    }
+  },
+  {
+    "id": "TC-CORE-040",
+    "functionality": "Performance and Stability",
+    "component": "PerformanceController",
+    "description": "Alt+Tab task switching stability",
+    "objective": "Verify minimizing and restoring the game via Alt+Tab causes no crashes.",
+    "preconditions": [
+      "Game running in fullscreen/windowed."
+    ],
+    "steps": [
+      "Press Alt+Tab to minimize, then restore game window."
+    ],
+    "expectedResult": "Game restores cleanly with full rendering and sound.",
+    "priority": "High",
+    "testType": "Non-Functional",
+    "tags": [
+      "alt-tab",
+      "stability",
+      "performance",
+      "window",
+      "fps"
+    ],
+    "gherkin": {
+      "feature": "Performance and Stability",
+      "scenario": "Alt+Tab task switching stability",
+      "given": "game running in fullscreen/windowed",
+      "when": "press alt+tab to minimize, then restore game window",
+      "then": "game restores cleanly with full rendering and sound"
+    }
+  },
+  {
+    "id": "TC-CORE-041",
+    "functionality": "Connectivity",
+    "component": "NetworkManager",
+    "description": "User authentication login",
+    "objective": "Verify online login and player authentication succeed.",
+    "preconditions": [
+      "Internet connection active."
+    ],
+    "steps": [
+      "Launch game and initiate login process."
+    ],
+    "expectedResult": "Authentication completes and user profile loads.",
+    "priority": "High",
+    "testType": "Integration",
+    "tags": [
+      "auth",
+      "connectivity",
+      "online",
+      "network",
+      "login"
+    ],
+    "gherkin": {
+      "feature": "Connectivity",
+      "scenario": "User authentication login",
+      "given": "internet connection active",
+      "when": "launch game and initiate login process",
+      "then": "authentication completes and user profile loads"
+    }
+  },
+  {
+    "id": "TC-CORE-042",
+    "functionality": "Connectivity",
+    "component": "NetworkManager",
+    "description": "Steam Cloud save synchronization",
+    "objective": "Verify saved game files synchronize properly with Steam Cloud.",
+    "preconditions": [
+      "Steam Cloud enabled."
+    ],
+    "steps": [
+      "Save game, close game, and check Steam Cloud sync status."
+    ],
+    "expectedResult": "Save files upload and sync properly to Steam Cloud.",
+    "priority": "High",
+    "testType": "Integration",
+    "tags": [
+      "connectivity",
+      "save",
+      "online",
+      "network",
+      "steam",
+      "cloud"
+    ],
+    "gherkin": {
+      "feature": "Connectivity",
+      "scenario": "Steam Cloud save synchronization",
+      "given": "steam cloud enabled",
+      "when": "save game, close game, and check steam cloud sync status",
+      "then": "save files upload and sync properly to steam cloud"
+    }
+  },
+  {
+    "id": "TC-CORE-043",
+    "functionality": "Connectivity",
+    "component": "NetworkManager",
+    "description": "Fetch online leaderboards and achievements",
+    "objective": "Verify online leaderboards and achievement stats load and update accurately.",
+    "preconditions": [
+      "Internet connection active."
+    ],
+    "steps": [
+      "Open leaderboards or trigger achievement condition."
+    ],
+    "expectedResult": "Data fetches and updates correctly from backend servers.",
+    "priority": "Medium",
+    "testType": "Integration",
+    "tags": [
+      "connectivity",
+      "leaderboard",
+      "online",
+      "network",
+      "achievements"
+    ],
+    "gherkin": {
+      "feature": "Connectivity",
+      "scenario": "Fetch online leaderboards and achievements",
+      "given": "internet connection active",
+      "when": "open leaderboards or trigger achievement condition",
+      "then": "data fetches and updates correctly from backend servers"
+    }
+  },
+  {
+    "id": "TC-CORE-044",
+    "functionality": "Connectivity",
+    "component": "NetworkManager",
+    "description": "Multiplayer co-op connection stability",
+    "objective": "Verify multiplayer sessions connect successfully and maintain low latency.",
+    "preconditions": [
+      "Online lobby active."
+    ],
+    "steps": [
+      "Join multiplayer session and play co-op level."
+    ],
+    "expectedResult": "Connection remains stable throughout session.",
+    "priority": "High",
+    "testType": "Integration",
+    "tags": [
+      "connectivity",
+      "multiplayer",
+      "online",
+      "network",
+      "coop"
+    ],
+    "gherkin": {
+      "feature": "Connectivity",
+      "scenario": "Multiplayer co-op connection stability",
+      "given": "online lobby active",
+      "when": "join multiplayer session and play co-op level",
+      "then": "connection remains stable throughout session"
+    }
+  },
+  {
+    "id": "TC-CORE-045",
+    "functionality": "Connectivity",
+    "component": "NetworkManager",
+    "description": "Graceful network disconnection handling",
+    "objective": "Verify losing internet connection shows an informative prompt without crashing.",
+    "preconditions": [
+      "Online session active."
+    ],
+    "steps": [
+      "Disconnect internet network adapter."
+    ],
+    "expectedResult": "Game displays disconnection prompt and returns to main menu gracefully.",
+    "priority": "High",
+    "testType": "Integration",
+    "tags": [
+      "connectivity",
+      "online",
+      "network",
+      "offline"
+    ],
+    "gherkin": {
+      "feature": "Connectivity",
+      "scenario": "Graceful network disconnection handling",
+      "given": "online session active",
+      "when": "disconnect internet network adapter",
+      "then": "game displays disconnection prompt and returns to main menu gracefully"
+    }
+  },
+  {
+    "id": "TC-CORE-046",
+    "functionality": "Steam Integration",
+    "component": "SteamService",
+    "description": "Unlock Steam Achievements",
+    "objective": "Verify achievements unlock when specific gameplay conditions are met.",
+    "preconditions": [
+      "Achievement requirement unfulfilled."
+    ],
+    "steps": [
+      "Fulfill gameplay condition for achievement."
+    ],
+    "expectedResult": "Achievement unlocks on Steam with pop-up notification.",
+    "priority": "High",
+    "testType": "Integration",
+    "tags": [
+      "integration",
+      "steam",
+      "overlay",
+      "achievement",
+      "unlock"
+    ],
+    "gherkin": {
+      "feature": "Steam Integration",
+      "scenario": "Unlock Steam Achievements",
+      "given": "achievement requirement unfulfilled",
+      "when": "fulfill gameplay condition for achievement",
+      "then": "achievement unlocks on steam with pop-up notification"
+    }
+  },
+  {
+    "id": "TC-CORE-047",
+    "functionality": "Steam Integration",
+    "component": "SteamService",
+    "description": "Open Steam Overlay",
+    "objective": "Verify Steam Overlay opens and closes using Shift + Tab shortcut.",
+    "preconditions": [
+      "Game running via Steam."
+    ],
+    "steps": [
+      "Press Shift + Tab."
+    ],
+    "expectedResult": "Steam Overlay opens cleanly over game screen.",
+    "priority": "Medium",
+    "testType": "Integration",
+    "tags": [
+      "integration",
+      "shortcut",
+      "steam",
+      "overlay"
+    ],
+    "gherkin": {
+      "feature": "Steam Integration",
+      "scenario": "Open Steam Overlay",
+      "given": "game running via steam",
+      "when": "press shift + tab",
+      "then": "steam overlay opens cleanly over game screen"
+    }
+  },
+  {
+    "id": "TC-CORE-048",
+    "functionality": "Steam Integration",
+    "component": "SteamService",
+    "description": "Capture Steam screenshots",
+    "objective": "Verify taking screenshots via F12 saves images to Steam library.",
+    "preconditions": [
+      "Game running."
+    ],
+    "steps": [
+      "Press F12 screenshot key."
+    ],
+    "expectedResult": "Screenshot notification appears and file is saved.",
+    "priority": "Low",
+    "testType": "Integration",
+    "tags": [
+      "integration",
+      "f12",
+      "screenshot",
+      "steam",
+      "overlay"
+    ],
+    "gherkin": {
+      "feature": "Steam Integration",
+      "scenario": "Capture Steam screenshots",
+      "given": "game running",
+      "when": "press f12 screenshot key",
+      "then": "screenshot notification appears and file is saved"
+    }
+  },
+  {
+    "id": "TC-CORE-049",
+    "functionality": "Steam Integration",
+    "component": "SteamService",
+    "description": "Display Steam build info",
+    "objective": "Verify game name, icon, and version number render correctly in Steam.",
+    "preconditions": [
+      "Steam client open."
+    ],
+    "steps": [
+      "Check game details page in Steam library."
+    ],
+    "expectedResult": "Correct icon, name, and version number are displayed.",
+    "priority": "Low",
+    "testType": "Integration",
+    "tags": [
+      "metadata",
+      "build",
+      "integration",
+      "steam",
+      "overlay"
+    ],
+    "gherkin": {
+      "feature": "Steam Integration",
+      "scenario": "Display Steam build info",
+      "given": "steam client open",
+      "when": "check game details page in steam library",
+      "then": "correct icon, name, and version number are displayed"
+    }
+  },
+  {
+    "id": "TC-CORE-050",
+    "functionality": "Steam Integration",
+    "component": "SteamService",
+    "description": "Apply Steam updates",
+    "objective": "Verify patch updates delivered via Steam install seamlessly.",
+    "preconditions": [
+      "New build patch available on Steam."
+    ],
+    "steps": [
+      "Update game via Steam client."
+    ],
+    "expectedResult": "Patch applies and game updates to newest version.",
+    "priority": "High",
+    "testType": "Integration",
+    "tags": [
+      "patch",
+      "integration",
+      "steam",
+      "overlay",
+      "update"
+    ],
+    "gherkin": {
+      "feature": "Steam Integration",
+      "scenario": "Apply Steam updates",
+      "given": "new build patch available on steam",
+      "when": "update game via steam client",
+      "then": "patch applies and game updates to newest version"
+    }
+  },
+  {
+    "id": "TC-CORE-051",
+    "functionality": "Compatibility",
+    "component": "HardwareCompatibility",
+    "description": "Test resolution compatibility",
+    "objective": "Verify game functions properly across 720p, 1080p, 1440p, and 4K display modes.",
+    "preconditions": [
+      "Test hardware with 4K display."
+    ],
+    "steps": [
+      "Set resolution to 720p, 1080p, 1440p, and 4K."
+    ],
+    "expectedResult": "Game renders cleanly at each target resolution.",
+    "priority": "High",
+    "testType": "Compatibility",
+    "tags": [
+      "resolution",
+      "display",
+      "hardware",
+      "os",
+      "compatibility"
+    ],
+    "gherkin": {
+      "feature": "Compatibility",
+      "scenario": "Test resolution compatibility",
+      "given": "test hardware with 4k display",
+      "when": "set resolution to 720p, 1080p, 1440p, and 4k",
+      "then": "game renders cleanly at each target resolution"
+    }
+  },
+  {
+    "id": "TC-CORE-052",
+    "functionality": "Compatibility",
+    "component": "HardwareCompatibility",
+    "description": "Test GPU hardware compatibility",
+    "objective": "Verify graphics rendering across NVIDIA, AMD, and Intel GPUs.",
+    "preconditions": [
+      "Test machines with NVIDIA, AMD, Intel GPUs."
+    ],
+    "steps": [
+      "Run game benchmark on each GPU family."
+    ],
+    "expectedResult": "Graphics render correctly across all GPU vendors.",
+    "priority": "High",
+    "testType": "Compatibility",
+    "tags": [
+      "hardware",
+      "gpu",
+      "os",
+      "compatibility"
+    ],
+    "gherkin": {
+      "feature": "Compatibility",
+      "scenario": "Test GPU hardware compatibility",
+      "given": "test machines with nvidia, amd, intel gpus",
+      "when": "run game benchmark on each gpu family",
+      "then": "graphics render correctly across all gpu vendors"
+    }
+  },
+  {
+    "id": "TC-CORE-053",
+    "functionality": "Compatibility",
+    "component": "HardwareCompatibility",
+    "description": "Test Windows OS compatibility",
+    "objective": "Verify game compatibility on Windows 10 and Windows 11 operating systems.",
+    "preconditions": [
+      "Test rigs running Windows 10 and Windows 11."
+    ],
+    "steps": [
+      "Launch and play game on both OS versions."
+    ],
+    "expectedResult": "Game executes without OS-specific bugs.",
+    "priority": "High",
+    "testType": "Compatibility",
+    "tags": [
+      "hardware",
+      "windows",
+      "os",
+      "compatibility"
+    ],
+    "gherkin": {
+      "feature": "Compatibility",
+      "scenario": "Test Windows OS compatibility",
+      "given": "test rigs running windows 10 and windows 11",
+      "when": "launch and play game on both os versions",
+      "then": "game executes without os-specific bugs"
+    }
+  },
+  {
+    "id": "TC-CORE-054",
+    "functionality": "Compatibility",
+    "component": "HardwareCompatibility",
+    "description": "Test keyboard layout compatibility",
+    "objective": "Verify input handling on PT-BR (ABNT2) and EN-US keyboard layouts.",
+    "preconditions": [
+      "System keyboard layout configured."
+    ],
+    "steps": [
+      "Switch layout between PT-BR and EN-US and test inputs."
+    ],
+    "expectedResult": "Key controls map accurately regardless of layout.",
+    "priority": "Medium",
+    "testType": "Compatibility",
+    "tags": [
+      "layout",
+      "hardware",
+      "os",
+      "keyboard",
+      "compatibility"
+    ],
+    "gherkin": {
+      "feature": "Compatibility",
+      "scenario": "Test keyboard layout compatibility",
+      "given": "system keyboard layout configured",
+      "when": "switch layout between pt-br and en-us and test inputs",
+      "then": "key controls map accurately regardless of layout"
+    }
+  },
+  {
+    "id": "TC-CORE-055",
+    "functionality": "Compatibility",
+    "component": "HardwareCompatibility",
+    "description": "Steam Offline mode execution",
+    "objective": "Verify game launches and plays when Steam is set to Offline Mode.",
+    "preconditions": [
+      "Steam set to Offline Mode."
+    ],
+    "steps": [
+      "Launch game from Steam library."
+    ],
+    "expectedResult": "Game launches and functions in offline mode.",
+    "priority": "Medium",
+    "testType": "Compatibility",
+    "tags": [
+      "hardware",
+      "offline",
+      "os",
+      "steam",
+      "compatibility"
+    ],
+    "gherkin": {
+      "feature": "Compatibility",
+      "scenario": "Steam Offline mode execution",
+      "given": "steam set to offline mode",
+      "when": "launch game from steam library",
+      "then": "game launches and functions in offline mode"
+    }
+  },
+  {
+    "id": "TC-CORE-056",
+    "functionality": "Usability and Accessibility",
+    "component": "AccessibilityManager",
+    "description": "Verify accessibility menu options",
+    "objective": "Verify accessibility settings (subtitles, high contrast, font size) are available.",
+    "preconditions": [
+      "Options menu open."
+    ],
+    "steps": [
+      "Navigate to Accessibility settings tab."
+    ],
+    "expectedResult": "Subtitles, contrast, and font size settings are visible.",
+    "priority": "Medium",
+    "testType": "Usability",
+    "tags": [
+      "accessibility",
+      "ui",
+      "usability",
+      "ux",
+      "subtitles"
+    ],
+    "gherkin": {
+      "feature": "Usability and Accessibility",
+      "scenario": "Verify accessibility menu options",
+      "given": "options menu open",
+      "when": "navigate to accessibility settings tab",
+      "then": "subtitles, contrast, and font size settings are visible"
+    }
+  },
+  {
+    "id": "TC-CORE-057",
+    "functionality": "Usability and Accessibility",
+    "component": "AccessibilityManager",
+    "description": "Subtitles synchronization and legibility",
+    "objective": "Verify subtitles are synchronized with spoken dialogue and easily readable.",
+    "preconditions": [
+      "Dialogue audio playing."
+    ],
+    "steps": [
+      "Observe subtitle timing and contrast background."
+    ],
+    "expectedResult": "Subtitles match audio timing and are clearly legible.",
+    "priority": "Medium",
+    "testType": "Usability",
+    "tags": [
+      "accessibility",
+      "usability",
+      "audio",
+      "ux",
+      "subtitles"
+    ],
+    "gherkin": {
+      "feature": "Usability and Accessibility",
+      "scenario": "Subtitles synchronization and legibility",
+      "given": "dialogue audio playing",
+      "when": "observe subtitle timing and contrast background",
+      "then": "subtitles match audio timing and are clearly legible"
+    }
+  },
+  {
+    "id": "TC-CORE-058",
+    "functionality": "Usability and Accessibility",
+    "component": "AccessibilityManager",
+    "description": "One-handed accessibility control mode",
+    "objective": "Verify game can be configured for one-handed controller or keyboard play.",
+    "preconditions": [
+      "Accessibility options open."
+    ],
+    "steps": [
+      "Enable single-hand input profile."
+    ],
+    "expectedResult": "Controls rebind to allow full single-handed play.",
+    "priority": "Low",
+    "testType": "Usability",
+    "tags": [
+      "accessibility",
+      "controls",
+      "usability",
+      "input",
+      "ux"
+    ],
+    "gherkin": {
+      "feature": "Usability and Accessibility",
+      "scenario": "One-handed accessibility control mode",
+      "given": "accessibility options open",
+      "when": "enable single-hand input profile",
+      "then": "controls rebind to allow full single-handed play"
+    }
+  },
+  {
+    "id": "TC-CORE-059",
+    "functionality": "Usability and Accessibility",
+    "component": "AccessibilityManager",
+    "description": "Interactive feedback cues",
+    "objective": "Verify clear audio and visual feedback triggers upon game interactions.",
+    "preconditions": [
+      "Gameplay active."
+    ],
+    "steps": [
+      "Interact with objects, buttons, and enemies."
+    ],
+    "expectedResult": "Audio chimes and visual highlights trigger upon interaction.",
+    "priority": "Medium",
+    "testType": "Usability",
+    "tags": [
+      "usability",
+      "feedback",
+      "ux"
+    ],
+    "gherkin": {
+      "feature": "Usability and Accessibility",
+      "scenario": "Interactive feedback cues",
+      "given": "gameplay active",
+      "when": "interact with objects, buttons, and enemies",
+      "then": "audio chimes and visual highlights trigger upon interaction"
+    }
+  },
+  {
+    "id": "TC-CORE-060",
+    "functionality": "Usability and Accessibility",
+    "component": "AccessibilityManager",
+    "description": "Tutorial and onboarding flow",
+    "objective": "Verify tutorial steps clearly guide player through core game mechanics.",
+    "preconditions": [
+      "New game started."
+    ],
+    "steps": [
+      "Play through introduction and tutorial prompts."
+    ],
+    "expectedResult": "Prompts clearly explain game mechanics and progression.",
+    "priority": "High",
+    "testType": "Usability",
+    "tags": [
+      "usability",
+      "onboarding",
+      "ux",
+      "tutorial"
+    ],
+    "gherkin": {
+      "feature": "Usability and Accessibility",
+      "scenario": "Tutorial and onboarding flow",
+      "given": "new game started",
+      "when": "play through introduction and tutorial prompts",
+      "then": "prompts clearly explain game mechanics and progression"
+    }
+  },
+  {
+    "id": "TC-CORE-061",
+    "functionality": "Regression and Edge Cases",
+    "component": "CoreEngine",
+    "description": "Backwards compatibility for save files",
+    "objective": "Verify older save files remain loadable after game version updates.",
+    "preconditions": [
+      "Save file from previous game version present."
+    ],
+    "steps": [
+      "Launch updated game build and load old save file."
+    ],
+    "expectedResult": "Save file loads without corruption or lost progress.",
+    "priority": "High",
+    "testType": "Regression",
+    "tags": [
+      "save",
+      "regression",
+      "stability",
+      "edge-case",
+      "update"
+    ],
+    "gherkin": {
+      "feature": "Regression and Edge Cases",
+      "scenario": "Backwards compatibility for save files",
+      "given": "save file from previous game version present",
+      "when": "launch updated game build and load old save file",
+      "then": "save file loads without corruption or lost progress"
+    }
+  },
+  {
+    "id": "TC-CORE-062",
+    "functionality": "Regression and Edge Cases",
+    "component": "CoreEngine",
+    "description": "Adjust settings mid-gameplay",
+    "objective": "Verify modifying graphics or controls during gameplay does not freeze or break UI.",
+    "preconditions": [
+      "Active gameplay session."
+    ],
+    "steps": [
+      "Open settings menu mid-game and alter parameters."
+    ],
+    "expectedResult": "Settings apply smoothly and UI resumes without error.",
+    "priority": "High",
+    "testType": "Regression",
+    "tags": [
+      "settings",
+      "ui",
+      "regression",
+      "stability",
+      "edge-case"
+    ],
+    "gherkin": {
+      "feature": "Regression and Edge Cases",
+      "scenario": "Adjust settings mid-gameplay",
+      "given": "active gameplay session",
+      "when": "open settings menu mid-game and alter parameters",
+      "then": "settings apply smoothly and ui resumes without error"
+    }
+  },
+  {
+    "id": "TC-CORE-063",
+    "functionality": "Regression and Edge Cases",
+    "component": "CoreEngine",
+    "description": "Force close recovery testing",
+    "objective": "Verify force closing game (Alt+F4 / Task Manager) does not corrupt save state.",
+    "preconditions": [
+      "Active gameplay session."
+    ],
+    "steps": [
+      "Force kill game process and re-launch."
+    ],
+    "expectedResult": "Game reopens and save data remains intact.",
+    "priority": "High",
+    "testType": "Regression",
+    "tags": [
+      "force-close",
+      "regression",
+      "stability",
+      "persistence",
+      "edge-case"
+    ],
+    "gherkin": {
+      "feature": "Regression and Edge Cases",
+      "scenario": "Force close recovery testing",
+      "given": "active gameplay session",
+      "when": "force kill game process and re-launch",
+      "then": "game reopens and save data remains intact"
+    }
+  },
+  {
+    "id": "TC-CORE-064",
+    "functionality": "Regression and Edge Cases",
+    "component": "CoreEngine",
+    "description": "Save state trigger during cutscene",
+    "objective": "Verify triggering save points during cutscenes does not break story flow.",
+    "preconditions": [
+      "Cutscene active."
+    ],
+    "steps": [
+      "Attempt to save or trigger autosave during cutscene."
+    ],
+    "expectedResult": "Progress saves correctly without breaking cutscene sequence.",
+    "priority": "Medium",
+    "testType": "Regression",
+    "tags": [
+      "save",
+      "cutscene",
+      "regression",
+      "stability",
+      "edge-case"
+    ],
+    "gherkin": {
+      "feature": "Regression and Edge Cases",
+      "scenario": "Save state trigger during cutscene",
+      "given": "cutscene active",
+      "when": "attempt to save or trigger autosave during cutscene",
+      "then": "progress saves correctly without breaking cutscene sequence"
+    }
+  },
+  {
+    "id": "TC-CORE-065",
+    "functionality": "Regression and Edge Cases",
+    "component": "CoreEngine",
+    "description": "Session state consistency",
+    "objective": "Verify game parameters and progress remain consistent across multiple launches.",
+    "preconditions": [
+      "Game played across multiple sessions."
+    ],
+    "steps": [
+      "Close and restart game 5 times while checking state."
+    ],
+    "expectedResult": "Game behavior and data remain completely consistent.",
+    "priority": "Medium",
+    "testType": "Regression",
+    "tags": [
+      "consistency",
+      "regression",
+      "stability",
+      "edge-case"
+    ],
+    "gherkin": {
+      "feature": "Regression and Edge Cases",
+      "scenario": "Session state consistency",
+      "given": "game played across multiple sessions",
+      "when": "close and restart game 5 times while checking state",
+      "then": "game behavior and data remain completely consistent"
+    }
+  },
+  {
+    "id": "TC-CORE-066",
+    "functionality": "Regression and Edge Cases",
+    "component": "CoreEngine",
+    "description": "Long duration stability test",
+    "objective": "Verify game stability over a continuous 2-hour gameplay soak test.",
+    "preconditions": [
+      "Game running continuously."
+    ],
+    "steps": [
+      "Leave game running and active for 2 hours."
+    ],
+    "expectedResult": "Game runs smoothly for 2 hours without memory leaks or crashes.",
+    "priority": "High",
+    "testType": "Regression",
+    "tags": [
+      "soak-test",
+      "regression",
+      "stability",
+      "edge-case"
+    ],
+    "gherkin": {
+      "feature": "Regression and Edge Cases",
+      "scenario": "Long duration stability test",
+      "given": "game running continuously",
+      "when": "leave game running and active for 2 hours",
+      "then": "game runs smoothly for 2 hours without memory leaks or crashes"
+    }
+  },
+  {
+    "id": "TC-CORE-067",
+    "functionality": "Regression and Edge Cases",
+    "component": "CoreEngine",
+    "description": "Full end-to-end regression check",
+    "objective": "Verify all achievements and save slots remain functional in current build.",
+    "preconditions": [
+      "Game build updated."
+    ],
+    "steps": [
+      "Test save slots and trigger multiple achievements."
+    ],
+    "expectedResult": "All save slots and achievements function without regression.",
+    "priority": "Critical",
+    "testType": "Regression",
+    "tags": [
+      "save",
+      "regression",
+      "stability",
+      "achievements",
+      "edge-case"
+    ],
+    "gherkin": {
+      "feature": "Regression and Edge Cases",
+      "scenario": "Full end-to-end regression check",
+      "given": "game build updated",
+      "when": "test save slots and trigger multiple achievements",
+      "then": "all save slots and achievements function without regression"
     }
   }
 ]
